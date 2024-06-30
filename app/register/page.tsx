@@ -1,3 +1,4 @@
+import { register } from "@/action/user";
 import { Input } from "../../components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
@@ -11,7 +12,7 @@ const Register = async () => {
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         Please provide all the necessary information
       </p>
-      <form className="my-8">
+      <form action={register} className="my-8">
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <div className="flex flex-col">
             <Label htmlFor="firstname">First Name</Label>
@@ -49,7 +50,7 @@ const Register = async () => {
               id="password"
               placeholder="*****"
               type="password"
-              name="email"
+              name="password"
               className="mb-2"
             />
           </div>
@@ -57,8 +58,10 @@ const Register = async () => {
         <button className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 to-neutral-600 block dark:bg0zince-800 w-full text-white rounded-md h-10 font-medium">
           Sign up &rarr;
         </button>
-     
-        <p className="text-neutal-600 text-sm max-2-sm mt-2 dark:text-neutral-300">Already have an account ? <Link href="/login">Login</Link></p>
+
+        <p className="text-neutal-600 text-sm max-2-sm mt-2 dark:text-neutral-300">
+          Already have an account ? <Link href="/login">Login</Link>
+        </p>
       </form>
     </div>
   );

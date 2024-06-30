@@ -2,11 +2,12 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+import { login } from "@/action/user";
 
 const Login = () => {
   return (
     <div className="mt-10 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
-      <form className="my-8">
+      <form className="my-8" action={login}>
         <Label htmlFor="email">Email Address</Label>
         <Input
           id="email"
@@ -42,14 +43,14 @@ const Login = () => {
             </button>
           </form>
 
-          <form>
-            <button>
-              <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-              <span className="text-neutral-700 dark:text-neutral-300 text-sm">
-                Google
-              </span>
-            </button>
-          </form>
+          {/* <form> */}
+          <button>
+            <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
+            <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+              Google
+            </span>
+          </button>
+          {/* </form> */}
         </section>
       </form>
     </div>
