@@ -5,6 +5,7 @@ import { User } from "@/models/Users";
 import { redirect } from "next/navigation";
 import {hash} from "bcryptjs"
 import { signIn } from "@/auth";
+import { UserSearch } from "lucide-react";
 
 
 const login = async (formData: FormData) => {
@@ -50,4 +51,10 @@ const register = async (formData: FormData) =>{
  redirect("/login")
 }
 
-export {register, login}
+const fetchAllUsers = async () => {
+  await connectDB()
+  const users = await User.find({})
+  return users
+}
+
+export {register, login, fetchAllUsers}
