@@ -33,6 +33,18 @@ const Navbar = async () => {
                 Dashboard
               </Link>
             </li>
+            {user.role === "admin" ? (
+              <li className="mt-2">
+                <Link
+                  href={"/private/settings"}
+                  className="hover:text-gray-400"
+                >
+                  Settings
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
 
             <form
               action={async () => {

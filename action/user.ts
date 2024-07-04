@@ -5,7 +5,6 @@ import { User } from "@/models/Users";
 import { redirect } from "next/navigation";
 import {hash} from "bcryptjs"
 import { signIn } from "@/auth";
-import { UserSearch } from "lucide-react";
 
 
 const login = async (formData: FormData) => {
@@ -24,7 +23,7 @@ const login = async (formData: FormData) => {
     throw err
   }
 
-  redirect("/")
+  redirect("/private/dashboard")
 }
 
 const register = async (formData: FormData) =>{
@@ -48,7 +47,15 @@ const register = async (formData: FormData) =>{
 
  await User.create({firstName, lastName,email, password: hashedPassword})
  console.log("User created successfully")
- redirect("/login")
+
+ await signIn("credentials", {
+  redirect: false,
+  callbackUrl:"/",
+  email,
+  password
+
+})
+ redirect("/private/dashboard")
 }
 
 const fetchAllUsers = async () => {
